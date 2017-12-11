@@ -1,4 +1,4 @@
-package generic;
+package Inheritance;
 
 public class SuperIlustration1 {
 	int a;
