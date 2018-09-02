@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:flt="http://directlinegroup.co.uk/Schemas/Faults/1/0" targetNamespace="http://directlinegroup.co.uk/Schemas/Faults/1/0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation>
+		Common faults generated or transferred AS-IS by ESB integration to the service consumer
+	</xs:documentation>
+	</xs:annotation>		
+	<!-- InvalidResponseFault  -->
+	<xs:element name="Fault" type="flt:InvalidResponseFaultType"/>
+	<xs:complexType name="InvalidResponseFaultType">
+		<xs:annotation>
+			<xs:documentation>A failure in processing of the response from the service provider because it has failed to supply some information or the information supplied does not meet the preconditions of the operation.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="flt:BaseFaultType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- CommonFault  -->
+	<xs:element name="BaseFault" type="flt:BaseFaultType"/>
+	<xs:complexType name="BaseFaultType">
+		<xs:sequence>
+			<xs:element name="faultCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="faultType" type="flt:FaultType" minOccurs="0"/>
+			<xs:element name="faultDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="faultSeverity" type="flt:SeverityType" minOccurs="0"/>
+			<xs:element name="faultSmmary" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- FaultType  -->
+	<xs:simpleType name="FaultType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Fatal"/>
+			<xs:enumeration value="Error"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="Debug"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- FaultType  -->
+	<xs:simpleType name="SeverityType">
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

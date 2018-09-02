@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://directlinegroup.co.uk/schemas/custdocs/custdocsesb/businessentity/1/0" targetNamespace="http://directlinegroup.co.uk/schemas/custdocs/custdocsesb/businessentity/1/0" elementFormDefault="qualified">
+	<xsd:element name="GetDraftDocumentRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="request" type="impl:ExternalJobRequestAPI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="listJobsDetailsResponseAPI">
+		<xsd:sequence>
+                          
+                           <xsd:element name="jobId" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+                                
+                </xsd:sequence>
+  </xsd:complexType>
+  
+  
+ <xsd:complexType name="listJobsDetailsRequestAPI">
+		<xsd:sequence>
+			<xsd:element name="startTime" type="xsd:string"/>
+			<xsd:element name="endTime" type="xsd:string" nillable="true"/>
+             <xsd:element name="jobId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="getJobDetailsRequestAPI">
+		<xsd:sequence>
+			<xsd:element name="jobId" type="xsd:int"/>
+			<xsd:element name="includeJobFiles" type="xsd:string" nillable="true"/>	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+			<xsd:complexType name="getJobDetailsResponseAPI">
+		<xsd:sequence>
+			<xsd:element name="queue" type="xsd:string" nillable="true"/>
+			<xsd:element name="input" type="xsd:string"/>
+			<xsd:element name="progress" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="project" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="config" type="impl:DeliveryChannelType" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="range" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="inputData" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="configData" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="appliance" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="purgeLocked" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="testStatus" type="xsd:boolean" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="submitted" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="started" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="finished" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />	
+			<xsd:element name="jobFiles" type="impl:jobFiles" minOccurs="0"/>
+	        <xsd:element name="jobProperties" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />	
+	        <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	  <xsd:complexType name="jobFiles">
+    <xsd:sequence>
+			<xsd:element name="contentType" type="xsd:string" minOccurs="0" maxOccurs="unbounded" nillable = "true" />
+			<xsd:element name="jobFileId" type="xsd:string" minOccurs="0" maxOccurs="unbounded" nillable = "true" />
+			<xsd:element name="jobId" type="xsd:boolean" minOccurs="0" maxOccurs="unbounded" nillable = "true" />
+			<xsd:element name="fileType" type="xsd:string" minOccurs="0" maxOccurs="unbounded" nillable = "true" />
+			<xsd:element name="filePath" type="xsd:string" minOccurs="0" maxOccurs="unbounded" nillable = "true" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+	<xsd:complexType name="ExternalJobRequestAPI">
+		<xsd:sequence>
+			<xsd:element name="batchConfigResID" type="xsd:int"/>
+			<xsd:element name="batchName" type="xsd:string" nillable="true"/>
+			<xsd:element name="transactionData" type="xsd:base64Binary" nillable="true"/>
+			<xsd:element name="userName" type="xsd:string"/>
+			<xsd:element name="adhocDocumentFlag" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="requestingSystem" type="impl:requestingSystemType" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="clientId" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="templateId" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="product" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="brandCode" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="deliveryChannel" type="impl:DeliveryChannelType" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="quoteId" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="quoteSequenceId" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="policyNumber" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="claimNumber" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="exposure" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="uniqueCommId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable = "false" />
+			<xsd:element name="isCommsRecipientPolicyHolder" type="xsd:boolean" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="authorGWUserId" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="authorFirstName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+			<xsd:element name="authorLastName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable = "true" />
+		
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AddOnType">
+		<xsd:sequence>
+			<xsd:element name="coverageCode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AddOnsType">
+		<xsd:sequence>
+			<xsd:element name="addOn" type="impl:AddOnType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="DeliveryChannelType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="autofax_Ins"/>
+			<xsd:enumeration value="centralprint_Ins"/>
+			<xsd:enumeration value="email_Ins"/>
+			<xsd:enumeration value="sms_Ins"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="requestingSystemType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="GWPC"/>
+			<xsd:enumeration value="GWCC"/>
+			<xsd:enumeration value="GWBC"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="PropertyAPI">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="value" type="xsd:string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArrayOfPropertyAPI">
+		<xsd:sequence>
+			<xsd:element name="item" type="impl:PropertyAPI" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="GetDraftDocumentResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="GetDraftDocumentReturn" type="impl:PackageAPI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ExceptionAPI">
+		<xsd:sequence>
+			<xsd:element name="classId" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="docId" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="id" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="message" type="xsd:string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArrayOfExceptionAPI">
+		<xsd:sequence>
+			<xsd:element name="item" type="impl:ExceptionAPI" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReviewExceptionAPI">
+		<xsd:sequence>
+			<xsd:element name="classId" type="xsd:int" nillable="true" minOccurs="0"/>
+			<xsd:element name="className" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="id" type="xsd:int" nillable="true" minOccurs="0"/>
+			<xsd:element name="msg" type="xsd:string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArrayOfReviewExceptionAPI">
+		<xsd:sequence>
+			<xsd:element name="item" type="impl:ReviewExceptionAPI" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArrayOf_xsd_string">
+		<xsd:sequence>
+			<xsd:element name="item" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReviewMessageAPI">
+		<xsd:sequence>
+			<xsd:element name="batchID" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="batchName" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="exceptions" type="impl:ArrayOfReviewExceptionAPI" minOccurs="0" nillable="true"/>
+			<xsd:element name="metaValues" type="impl:ArrayOfPropertyAPI" minOccurs="0" nillable="true"/>
+			<xsd:element name="reviewCase" type="xsd:base64Binary" minOccurs="0" nillable="true"/>
+			<xsd:element name="transactionNo" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="userKeys" type="impl:ArrayOf_xsd_string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PackageAPIBase" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="businessObjectValues" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="exceptions" type="impl:ArrayOfExceptionAPI" minOccurs="0" nillable="true"/>
+			<xsd:element name="numberTransactions" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="reviewMessage" type="impl:ReviewMessageAPI" minOccurs="0" nillable="true"/>
+			<xsd:element name="transactionNo" type="xsd:int" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ChannelDocumentAPIBase" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="channelId" type="xsd:int"  minOccurs="0" nillable="true" />
+			<xsd:element name="data" type="xsd:base64Binary" minOccurs="0" nillable="true"/>
+			<xsd:element name="destinationId" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="formatString" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="masterChannelId" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="outputEncoding" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="propertyNames" type="impl:ArrayOf_xsd_string" minOccurs="0" nillable="true"/>
+			<xsd:element name="propertyValues" type="impl:ArrayOf_xsd_string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentJobAPI">
+		<xsd:sequence>
+			<xsd:element name="batchID" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="docDef" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="docDefVersion" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="docJobID" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="effectiveDate" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="idiomDesc" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="idiomId" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="jurisdictionDesc" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="jurisdictionId" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="languageDesc" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="languageId" type="xsd:int" minOccurs="0" nillable="true"/>
+			<xsd:element name="userKeys" type="impl:ArrayOf_xsd_string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ChannelDocumentAPI">
+		<xsd:complexContent>
+			<xsd:extension base="impl:ChannelDocumentAPIBase">
+				<xsd:sequence>
+					<xsd:element name="documentJob" type="impl:DocumentJobAPI" minOccurs="0" nillable="true"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ArrayOfChannelDocumentAPI">
+		<xsd:sequence>
+			<xsd:element name="item" type="impl:ChannelDocumentAPI" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PackageAPI">
+		<xsd:complexContent>
+			<xsd:extension base="impl:PackageAPIBase">
+				<xsd:sequence>
+					<xsd:element name="masterChannels" type="impl:ArrayOfChannelDocumentAPI" nillable="true"/>
+					<xsd:element name="slaveChannels" type="impl:ArrayOfChannelDocumentAPI" nillable="true"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="CreateDocumentsRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="request" type="impl:ExternalJobRequestAPI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+	<xsd:element name="CreateDocumentsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="jobId" nillable="true" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GetJobsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="items" type="impl:listJobsDetailsResponseAPI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+			<xsd:element name="GetJobsRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="request" type="impl:listJobsDetailsRequestAPI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+			<xsd:element name="GetJobDetailRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="request" type="impl:getJobDetailsRequestAPI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+	<xsd:element name="GetJobDetailResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="impl:getJobDetailsResponseAPI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+</xsd:schema>
